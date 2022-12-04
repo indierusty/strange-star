@@ -1,4 +1,7 @@
 #include "common.h"
+#include "main.h"
+
+GameState g;
 
 static void init(void);
 static void update_and_draw(void);
@@ -21,16 +24,23 @@ int main()
 
 static void init(void) 
 {
+    /// Player
+    player_init();
 }
 
 static void update(void)
 {
+    /// Player
+    player_update();
 }
 
 static void draw(void) 
 {
     BeginDrawing();
     ClearBackground(COLOR_BACKGROUND);
+
+    /// Player
+    player_draw();
 
     EndDrawing();
 }
