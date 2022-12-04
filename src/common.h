@@ -2,6 +2,7 @@
 #define COMMON_H
 
 #include "raylib.h"
+#include "raymath.h"
 
 /// 1<<8 == 256 just for fun
 static const int screen_width = 1<<8;

@@ -6,6 +6,8 @@
 typedef struct {
 	Vector2 position;
 	Vector2 direction;
+	Vector2 acceleration;
+	Vector2 speed;
 	float radius;
 } Player;
 

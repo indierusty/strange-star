@@ -55,3 +55,4 @@ static void end(void)
 {
     CloseWindow();
 }
+
