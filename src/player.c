@@ -17,12 +17,15 @@ void player_init(void)
 
 void player_update(void)
 {
+#define SPEED 200.0f
 	/// Player position movement 
-	if (IsKeyDown(KEY_A)) g.player.speed.x = -2;
-	else if (IsKeyDown(KEY_D)) g.player.speed.x = 2;
-	else if (IsKeyDown(KEY_W)) g.player.speed.y = -2;
-	else if (IsKeyDown(KEY_S)) g.player.speed.y = 2;
+	if (IsKeyDown(KEY_A)) g.player.speed.x = -SPEED*g.delta;
+	else if (IsKeyDown(KEY_D)) g.player.speed.x = SPEED*g.delta;
+	else if (IsKeyDown(KEY_W)) g.player.speed.y = -SPEED*g.delta;
+	else if (IsKeyDown(KEY_S)) g.player.speed.y = SPEED*g.delta;
 	else g.player.speed = Vector2Zero();
+
+#undef SPEED /// ? is it useful don't known yet
 
 	// for smooth movement 
 	g.player.acceleration = Vector2Lerp(g.player.acceleration, g.player.speed, 0.1);

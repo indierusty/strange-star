@@ -9,6 +9,7 @@
 typedef struct {
 	Player player;
 	Bullet bullets[MAX_BULLET];
+	float delta;
 } GameState;
 
 extern GameState g;

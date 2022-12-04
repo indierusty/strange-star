@@ -23,7 +23,7 @@ int main()
 static void init(void) 
 {
     InitWindow(screen_width, screen_height, "raylib");
-    SetTargetFPS(30);
+    SetTargetFPS(60);
 
     /// Player
     player_init();
@@ -34,6 +34,9 @@ static void init(void)
 
 static void update(void)
 {
+	/// Delta Time
+	g.delta	= GetFrameTime();	
+
     /// Player
     player_update();
 
