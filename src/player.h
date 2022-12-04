@@ -15,6 +15,7 @@ typedef struct {
 	float bullet_radius;
 } Player;
 
+
 void player_init(void);
 void player_update(void);
 void player_draw(void);

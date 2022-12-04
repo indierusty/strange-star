@@ -1,5 +1,6 @@
 #include "common.h"
 #include "main.h"
+#include "bullet.h"
 
 GameState g;
 
@@ -9,9 +10,6 @@ static void end(void);
 
 int main() 
 {
-    InitWindow(screen_width, screen_height, "raylib");
-    SetTargetFPS(60);
-
     init();
 
     while (!WindowShouldClose()) 
@@ -24,14 +22,23 @@ int main()
 
 static void init(void) 
 {
+    InitWindow(screen_width, screen_height, "raylib");
+    SetTargetFPS(30);
+
     /// Player
     player_init();
+
+    /// Bullets
+    bullets_init();
 }
 
 static void update(void)
 {
     /// Player
     player_update();
+
+    /// Bullets
+    bullets_update();
 }
 
 static void draw(void) 
@@ -41,6 +48,9 @@ static void draw(void)
 
     /// Player
     player_draw();
+
+    /// Bullets
+    bullets_draw();
 
     EndDrawing();
 }

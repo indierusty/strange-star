@@ -24,8 +24,8 @@ void player_update(void)
 	else if (IsKeyDown(KEY_S)) g.player.speed.y = 2;
 	else g.player.speed = Vector2Zero();
 
+	// for smooth movement 
 	g.player.acceleration = Vector2Lerp(g.player.acceleration, g.player.speed, 0.1);
-
 	g.player.position = Vector2Add(g.player.position, g.player.acceleration);
 
 	/// Player direction movement
@@ -36,6 +36,10 @@ void player_update(void)
 				Vector2Scale(g.player.direction, g.player.radius+GAP+g.player.bullet_radius)
 		);
 
+	/// Shooting Bullet
+	if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+		make_bullet();
+	}
 }
 
 void player_draw(void)
