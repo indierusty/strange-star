@@ -9,6 +9,10 @@ typedef struct {
 	Vector2 acceleration;
 	Vector2 speed;
 	float radius;
+
+	/// bullet
+	Vector2 bullet_position;
+	float bullet_radius;
 } Player;
 
 void player_init(void);
