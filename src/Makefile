@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -std=c99 
 LIBS=-lraylib -lm
-OBJS=main.o player.o bullet.o
+OBJS=main.o player.o bullet.o stars.o
 NAME=strange_glaxy
 
 $(NAME): $(OBJS)
@@ -14,6 +14,9 @@ player.o: player.c player.h common.h main.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
 bullet.o: bullet.c bullet.h common.h main.h
+	$(CC) -c $< $(CFLAGS) $(LIBS) 
+
+stars.o: stars.c stars.h common.h main.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
 run: $(NAME)

@@ -30,6 +30,9 @@ static void init(void)
 
     /// Bullets
     bullets_init();
+
+	/// Stars
+	stars_init();
 }
 
 static void update(void)
@@ -42,12 +45,18 @@ static void update(void)
 
     /// Bullets
     bullets_update();
+
+	/// Stars
+	stars_update();
 }
 
 static void draw(void) 
 {
     BeginDrawing();
     ClearBackground(COLOR_BACKGROUND);
+
+	/// Stars
+	stars_draw();
 
     /// Player
     player_draw();
