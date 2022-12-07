@@ -10,9 +10,16 @@ typedef struct {
 	Vector2 speed;
 	float radius;
 
-	/// bullet
+	/// bullet to show direction to dash
 	Vector2 bullet_position;
 	float bullet_radius;
+
+	bool dashing;
+	float dash_speed;
+	Vector2 dash_dir;
+
+	float time_counter;
+	float dash_time;
 } Player;
 
 

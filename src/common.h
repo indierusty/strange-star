@@ -4,6 +4,8 @@
 #include "raylib.h"
 #include "raymath.h"
 
+#define DEBUG
+
 #ifdef DEBUG
 	#include "stdio.h"
 #endif
@@ -16,5 +18,6 @@ static const int screen_height= 1<<8;
 #define COLOR_BACKGROUND	(Color) {40, 40, 40, 255}
 #define COLOR_PLAYER		(Color) {0, 228, 48, 255}
 #define COLOR_STAR			(Color) {0xeb, 0xdb, 0xb2, 255}
+#define COLOR_ESTAR			(Color) {0xfa, 0xbd, 0x2f, 255}
 
 #endif // COMMON_H

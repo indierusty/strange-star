@@ -1,6 +1,5 @@
 #include "common.h"
-#include "main.h"
-#include "bullet.h"
+#include "state.h"
 
 GameState g;
 
@@ -23,16 +22,20 @@ int main()
 static void init(void) 
 {
     InitWindow(screen_width, screen_height, "raylib");
-    SetTargetFPS(60);
+    SetTargetFPS(20);
+
+	/// state init
+	g.estars_count = 3; /// must be less than MAX_ESTAR
+	g.mndistance = 150;
 
     /// Player
     player_init();
 
-    /// Bullets
-    bullets_init();
-
 	/// Stars
 	stars_init();
+
+	/// Estars
+	estars_init();
 }
 
 static void update(void)
@@ -43,11 +46,11 @@ static void update(void)
     /// Player
     player_update();
 
-    /// Bullets
-    bullets_update();
-
 	/// Stars
 	stars_update();
+
+	/// Estars
+	estars_update();
 }
 
 static void draw(void) 
@@ -61,8 +64,8 @@ static void draw(void)
     /// Player
     player_draw();
 
-    /// Bullets
-    bullets_draw();
+	/// Estars
+	estars_draw();
 
     EndDrawing();
 }

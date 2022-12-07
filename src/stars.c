@@ -1,5 +1,5 @@
 #include "stars.h"
-#include "main.h"
+#include "state.h"
 
 static Vector2 get_pos() 
 {
