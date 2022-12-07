@@ -23,7 +23,7 @@ static Vector2 position()
     return pos;
 }
 
-static void init(Estar* e)
+void estar_init(Estar* e)
 {
 	e->active = false;
 
@@ -46,7 +46,7 @@ void estars_init(void)
 {
 	for (int i = 0; i < g.estars_count; i++) 
 	{
-		init(&g.estars[i]);
+		estar_init(&g.estars[i]);
 	}
 }
 
@@ -56,8 +56,13 @@ static void update(Estar* e)
 
 	if (e->active)
 	{
-        if ((e->start_time + e->duration) <= e->time_counter) {
-            init(e);
+        if (e->position.x - e->radius >= screen_width ||
+            e->position.x + e->radius <= 0 ||
+            e->position.y - e->radius >= screen_height ||
+            e->position.y + e->radius <= 0
+           ){
+            estar_init(e);
+            g.score++;
         }
 
 		e->radius = Lerp(e->radius, e->max_radius, e->blink_speed*g.delta);

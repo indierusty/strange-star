@@ -20,6 +20,7 @@ typedef struct {
 	float blink_speed;
 } Estar;
 
+void estar_init(Estar* e);
 void estars_init(void);
 void estars_update(void);
 void estars_draw(void);

@@ -59,7 +59,7 @@ void player_update(void)
 	else 
 	{
 		// for smooth movement 
-		g.player.acceleration = Vector2Lerp(g.player.acceleration, g.player.speed, 0.1);
+		g.player.acceleration = Vector2Lerp(g.player.acceleration, g.player.speed, 0.3);
 		g.player.position = Vector2Add(g.player.position, g.player.acceleration);
 
 		/// Player direction movement

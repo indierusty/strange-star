@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -std=c99 
 LIBS=-lraylib -lm
-OBJS=main.o player.o stars.o estars.o
+OBJS=main.o player.o stars.o estars.o gameplay.o
 NAME=strange_glaxy
 
 $(NAME): $(OBJS)
@@ -17,6 +17,9 @@ stars.o: stars.c stars.h common.h state.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
 estars.o: estars.c estars.h common.h state.h
+	$(CC) -c $< $(CFLAGS) $(LIBS) 
+
+gameplay.o: gameplay.c gameplay.h common.h state.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
 run: $(NAME)

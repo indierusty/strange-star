@@ -12,12 +12,12 @@ typedef struct {
 	Player player;
 	Star stars[MAX_STAR];
 	Estar estars[MAX_ESTAR];
-	/// max initial distance between player and estar 
-	/// and between estars
+	/// mn initial distance between player and estar and between estars
 	int mndistance;
-
 	int estars_count;
 	float delta;
+	int score;
+	bool out;
 } GameState;
 
 extern GameState g;
