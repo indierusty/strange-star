@@ -1,4 +1,4 @@
-#include "player.h"
+#include "common.h"
 #include "state.h"
 
 /// gap between player and bullet

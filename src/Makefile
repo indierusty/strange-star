@@ -1,25 +1,34 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -std=c99 
 LIBS=-lraylib -lm
-OBJS=main.o player.o stars.o estars.o gameplay.o
+OBJS=main.o player.o stars.o estars.o screen_gameplay.o screen_logo.o screen_title.o screen_ending.o
 NAME=strange_glaxy
 
 $(NAME): $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LIBS)
 
-main.o: main.c state.h common.h
+main.o: main.c state.h screens.h common.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
  
-player.o: player.c player.h common.h state.h
+player.o: player.c common.h state.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
-stars.o: stars.c stars.h common.h state.h
+stars.o: stars.c common.h state.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
-estars.o: estars.c estars.h common.h state.h
+estars.o: estars.c common.h state.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
-gameplay.o: gameplay.c gameplay.h common.h state.h
+screen_gameplay.o: screen_gameplay.c screens.h state.h
+	$(CC) -c $< $(CFLAGS) $(LIBS) 
+
+screen_logo.o: screen_logo.c common.h screens.h 
+	$(CC) -c $< $(CFLAGS) $(LIBS) 
+
+screen_title.o: screen_title.c common.h screens.h 
+	$(CC) -c $< $(CFLAGS) $(LIBS) 
+
+screen_ending.o: screen_ending.c common.h screens.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
 run: $(NAME)

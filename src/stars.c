@@ -1,4 +1,4 @@
-#include "stars.h"
+#include "common.h"
 #include "state.h"
 
 static Vector2 get_pos() 
