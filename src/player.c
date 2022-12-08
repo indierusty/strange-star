@@ -11,15 +11,12 @@ void player_init(void)
 	g.player.position.y = screen_height*1.0f/2;
 	g.player.direction = Vector2One();
 
-	g.player.bullet_position = Vector2Add(g.player.position, Vector2Scale(g.player.direction, g.player.radius+2));
-	g.player.bullet_radius = 3;
-
 	g.player.dashing = false;
-	g.player.dash_speed = 300.0f;
+	g.player.dash_speed = 400.0f;
 	g.player.dash_dir = Vector2Zero();
 
 	g.player.time_counter = 0.0f;
-	g.player.dash_time = 0.2f;
+	g.player.dash_time = 0.10f;
 }
 
 static void handle_dashing(void)
@@ -34,19 +31,32 @@ static void handle_dashing(void)
 	g.player.position = Vector2Add(g.player.position, Vector2Scale(g.player.dash_dir, g.player.dash_speed*g.delta));
 }
 
+static bool is_in_motion() 
+{
+	return !(g.player.direction.x == 0 && g.player.direction.y == 0);
+}
+
+static Vector2 new_vec(float x, float y) 
+{
+	return (Vector2){x, y};
+}
+
 void player_update(void)
 {
 #define SPEED 200.0f
-	/// Player position movement 
-	if (IsKeyDown(KEY_A)) g.player.speed.x = -SPEED*g.delta;
-	else if (IsKeyDown(KEY_D)) g.player.speed.x = SPEED*g.delta;
-	else if (IsKeyDown(KEY_W)) g.player.speed.y = -SPEED*g.delta;
-	else if (IsKeyDown(KEY_S)) g.player.speed.y = SPEED*g.delta;
-	else g.player.speed = Vector2Zero();
+
+	if (IsKeyDown(KEY_A)) g.player.direction = new_vec(-1, 0);
+	else if (IsKeyDown(KEY_D)) g.player.direction = new_vec(1, 0);
+	else if (IsKeyDown(KEY_W)) g.player.direction = new_vec(0, -1);
+	else if (IsKeyDown(KEY_S)) g.player.direction = new_vec(0, 1);
+	else g.player.direction = Vector2Zero();
+
+	g.player.speed.x = g.player.direction.x * SPEED * g.delta;
+	g.player.speed.y = g.player.direction.y * SPEED * g.delta;
 
 #undef SPEED /// ? is it useful don't known yet
 
-	if ((IsKeyPressed(KEY_SPACE) || IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) && !g.player.dashing) {
+	if (IsKeyPressed(KEY_SPACE) && is_in_motion() && !g.player.dashing) {
 		g.player.dashing = true;
 		g.player.dash_dir = g.player.direction;
 	}
@@ -59,16 +69,8 @@ void player_update(void)
 	else 
 	{
 		// for smooth movement 
-		g.player.acceleration = Vector2Lerp(g.player.acceleration, g.player.speed, 0.3);
+		g.player.acceleration = Vector2Lerp(g.player.acceleration, g.player.speed, 0.15);
 		g.player.position = Vector2Add(g.player.position, g.player.acceleration);
-
-		/// Player direction movement
-		g.player.direction = Vector2Normalize(Vector2Subtract(GetMousePosition(), g.player.position));
-		g.player.bullet_position = 
-			Vector2Add( 
-					g.player.position,
-					Vector2Scale(g.player.direction, g.player.radius+GAP+g.player.bullet_radius)
-			);
 	}
 
 }
@@ -79,9 +81,6 @@ void player_draw(void)
 	DrawCircleV(g.player.position, g.player.radius, COLOR_PLAYER);
 	DrawCircleV(g.player.position, g.player.radius-3, COLOR_BACKGROUND);
 	DrawCircleV(g.player.position, g.player.radius-5, COLOR_PLAYER);
-
-	/// Draw Player Bullet
-	if (!g.player.dashing) DrawCircleV(g.player.bullet_position, g.player.bullet_radius, COLOR_PLAYER);
 }
 
 
