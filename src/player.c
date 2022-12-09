@@ -36,11 +36,6 @@ static bool is_in_motion()
 	return !(g.player.direction.x == 0 && g.player.direction.y == 0);
 }
 
-static Vector2 new_vec(float x, float y) 
-{
-	return (Vector2){x, y};
-}
-
 void player_update(void)
 {
 #define SPEED 200.0f
@@ -78,9 +73,9 @@ void player_update(void)
 void player_draw(void)
 {
 	/// Draw Player Body
-	DrawCircleV(g.player.position, g.player.radius, COLOR_PLAYER);
+	DrawCircleV(g.player.position, g.player.radius, COLOR_GREEN);
 	DrawCircleV(g.player.position, g.player.radius-3, COLOR_BACKGROUND);
-	DrawCircleV(g.player.position, g.player.radius-5, COLOR_PLAYER);
+	DrawCircleV(g.player.position, g.player.radius-5, COLOR_GREEN);
 }
 
 

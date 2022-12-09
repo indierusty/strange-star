@@ -1,7 +1,8 @@
 CC=gcc
 CFLAGS=-Wall -Wextra -pedantic -std=c99 
 LIBS=-lraylib -lm
-OBJS=main.o player.o stars.o estars.o screen_gameplay.o screen_logo.o screen_title.o screen_ending.o
+OBJS=main.o player.o stars.o estars.o screen_gameplay.o \
+	 screen_logo.o screen_title.o screen_ending.o screen_tutorial.o
 NAME=strange_glaxy
 
 $(NAME): $(OBJS)
@@ -29,6 +30,9 @@ screen_title.o: screen_title.c common.h screens.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
 screen_ending.o: screen_ending.c common.h screens.h
+	$(CC) -c $< $(CFLAGS) $(LIBS) 
+
+screen_tutorial.o: screen_tutorial.c common.h screens.h
 	$(CC) -c $< $(CFLAGS) $(LIBS) 
 
 run: $(NAME)

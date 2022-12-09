@@ -31,7 +31,7 @@
 //----------------------------------------------------------------------------------
 // Types and Structures Definition
 //----------------------------------------------------------------------------------
-typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
+typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, TUTORIAL, ENDING, EXIT } GameScreen;
 
 //----------------------------------------------------------------------------------
 // Global Variables Declaration (shared by several modules)
@@ -40,6 +40,7 @@ extern GameScreen currentScreen;
 extern Font font;
 extern Music music;
 extern Sound fxCoin;
+extern bool exit_game;
 
 //----------------------------------------------------------------------------------
 // Logo Screen Functions Declaration
@@ -67,6 +68,15 @@ void update_gameplay_screen(void);
 void draw_gameplay_screen(void);
 void unload_gameplay_screen(void);
 int finish_gameplay_screen(void);
+
+//----------------------------------------------------------------------------------
+// Tutorial Screen Functions Declaration
+//----------------------------------------------------------------------------------
+void init_tutorial_screen(void);
+void update_tutorial_screen(void);
+void draw_tutorial_screen(void);
+void unload_tutorial_screen(void);
+int finish_tutorial_screen(void);
 
 //----------------------------------------------------------------------------------
 // Ending Screen Functions Declaration

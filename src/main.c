@@ -14,6 +14,7 @@ GameScreen currentScreen = 0;
 Font font = { 0 };
 Music music = { 0 };
 Sound fxCoin = { 0 };
+bool exit_game = false;
 
 GameState g;
 
@@ -27,13 +28,13 @@ static int transToScreen = -1;
 //----------------------------------------------------------------------------------
 // Local Functions Declaration
 //----------------------------------------------------------------------------------
-static void ChangeToScreen(int screen);     // Change to screen, no transition effect
+static void change_to_screen(int screen);     // Change to screen, no transition effect
 
-static void TransitionToScreen(int screen); // Request transition to next screen
-static void UpdateTransition(void);         // Update transition effect
-static void DrawTransition(void);           // Draw transition effect (full-screen rectangle)
+static void transition_to_screen(int screen); // Request transition to next screen
+static void update_transition(void);         // Update transition effect
+static void draw_transition(void);           // Draw transition effect (full-screen rectangle)
 
-static void UpdateDrawFrame(void);          // Update and draw one frame
+static void update_draw_frame(void);          // Update and draw one frame
 
 //----------------------------------------------------------------------------------
 // Main entry point
@@ -47,7 +48,7 @@ int main(void)
     InitAudioDevice();      // Initialize audio device
 
     // Load global data (assets that must be available in all screens, i.e. font)
-    font = LoadFont("resources/mecha.png");
+    font = LoadFont("resources/Roboto-Medium.ttf");
     music = LoadMusicStream("resources/ambient.ogg");
     fxCoin = LoadSound("resources/coin.wav");
 
@@ -61,15 +62,15 @@ int main(void)
 #define FPS 120
 
 #if defined(PLATFORM_WEB)
-    emscripten_set_main_loop(UpdateDrawFrame, FPS, 1);
+    emscripten_set_main_loop(update_draw_frame, FPS, 1);
 #else
     SetTargetFPS(FPS);       // Set our game to run at 60 frames-per-second
     //--------------------------------------------------------------------------------------
 
     // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    while (!WindowShouldClose() && !exit_game)    // Detect window close button or ESC key
     {
-        UpdateDrawFrame();
+        update_draw_frame();
     }
 #endif
 
@@ -101,7 +102,7 @@ int main(void)
 // Module specific Functions Definition
 //----------------------------------------------------------------------------------
 // Change to next screen, no transition
-static void ChangeToScreen(int screen)
+static void change_to_screen(int screen)
 {
     // Unload current screen
     switch (currentScreen)
@@ -127,7 +128,7 @@ static void ChangeToScreen(int screen)
 }
 
 // Request transition to next screen
-static void TransitionToScreen(int screen)
+static void transition_to_screen(int screen)
 {
     onTransition = true;
     transFadeOut = false;
@@ -137,7 +138,7 @@ static void TransitionToScreen(int screen)
 }
 
 // Update transition effect (fade-in, fade-out)
-static void UpdateTransition(void)
+static void update_transition(void)
 {
     if (!transFadeOut)
     {
@@ -156,6 +157,7 @@ static void UpdateTransition(void)
                 case LOGO: unload_logo_screen(); break;
                 case TITLE: unload_title_screen(); break;
                 case GAMEPLAY: unload_gameplay_screen(); break;
+                case TUTORIAL: unload_tutorial_screen(); break;
                 case ENDING: unload_ending_screen(); break;
                 default: break;
             }
@@ -166,6 +168,7 @@ static void UpdateTransition(void)
                 case LOGO: init_logo_screen(); break;
                 case TITLE: init_title_screen(); break;
                 case GAMEPLAY: init_gameplay_screen(); break;
+                case TUTORIAL: init_tutorial_screen(); break;
                 case ENDING: init_ending_screen(); break;
                 default: break;
             }
@@ -193,13 +196,13 @@ static void UpdateTransition(void)
 }
 
 // Draw transition effect (full-screen rectangle)
-static void DrawTransition(void)
+static void draw_transition(void)
 {
     DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Fade(BLACK, transAlpha));
 }
 
 // Update and draw game frame
-static void UpdateDrawFrame(void)
+static void update_draw_frame(void)
 {
     // Update
     //----------------------------------------------------------------------------------
@@ -212,29 +215,36 @@ static void UpdateDrawFrame(void)
             case LOGO:
             {
                 update_logo_screen();
-                if (finish_logo_screen()) TransitionToScreen(TITLE);
+                if (finish_logo_screen()) transition_to_screen(TITLE);
 
             } break;
             case TITLE:
             {
                 update_title_screen();
-                if (finish_title_screen() == 1) TransitionToScreen(GAMEPLAY);
+                if (finish_title_screen() == GAMEPLAY) transition_to_screen(GAMEPLAY);
+				if (finish_title_screen() == TUTORIAL)  transition_to_screen(TUTORIAL);
+				if (finish_title_screen() == EXIT)  exit_game = true;
 
             } break;
             case GAMEPLAY:
             {
                 update_gameplay_screen();
-                if (finish_gameplay_screen() == 1) TransitionToScreen(ENDING);
+                if (finish_gameplay_screen() == 1) transition_to_screen(ENDING);
+            } break;
+            case TUTORIAL:
+            {
+                update_tutorial_screen();
+                if (finish_tutorial_screen() == 1) transition_to_screen(TITLE);
             } break;
             case ENDING:
             {
                 update_ending_screen();
-                if (finish_ending_screen() == 1) TransitionToScreen(TITLE);
+                if (finish_ending_screen() == 1) transition_to_screen(TITLE);
             } break;
             default: break;
         }
     }
-    else UpdateTransition();    // Update transition (fade-in, fade-out)
+    else update_transition();    // Update transition (fade-in, fade-out)
     //----------------------------------------------------------------------------------
 
     // Draw
@@ -248,12 +258,13 @@ static void UpdateDrawFrame(void)
             case LOGO: draw_logo_screen(); break;
             case TITLE: draw_title_screen(); break;
             case GAMEPLAY: draw_gameplay_screen(); break;
+            case TUTORIAL: draw_tutorial_screen(); break;
             case ENDING: draw_ending_screen(); break;
             default: break;
         }
 
         // Draw full screen rectangle in front of everything
-        if (onTransition) DrawTransition();
+        if (onTransition) draw_transition();
 
         //DrawFPS(10, 10);
 

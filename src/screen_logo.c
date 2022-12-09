@@ -104,32 +104,32 @@ void draw_logo_screen(void)
 {
     if (state == 0)         // Draw blinking top-left square corner
     {
-        if ((framesCounter/10)%2) DrawRectangle(logoPositionX, logoPositionY, 16, 16, COLOR_STAR);
+        if ((framesCounter/10)%2) DrawRectangle(logoPositionX, logoPositionY, 16, 16, COLOR_YELLOW);
     }
     else if (state == 1)    // Draw bars animation: top and left
     {
-        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, COLOR_STAR);
-        DrawRectangle(logoPositionX, logoPositionY, 16, leftSideRecHeight, COLOR_STAR);
+        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, COLOR_YELLOW);
+        DrawRectangle(logoPositionX, logoPositionY, 16, leftSideRecHeight, COLOR_YELLOW);
     }
     else if (state == 2)    // Draw bars animation: bottom and right
     {
-        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, COLOR_STAR);
-        DrawRectangle(logoPositionX, logoPositionY, 16, leftSideRecHeight, COLOR_STAR);
+        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, COLOR_YELLOW);
+        DrawRectangle(logoPositionX, logoPositionY, 16, leftSideRecHeight, COLOR_YELLOW);
 
-        DrawRectangle(logoPositionX + 240, logoPositionY, 16, rightSideRecHeight, COLOR_STAR);
-        DrawRectangle(logoPositionX, logoPositionY + 240, bottomSideRecWidth, 16, COLOR_STAR);
+        DrawRectangle(logoPositionX + 240, logoPositionY, 16, rightSideRecHeight, COLOR_YELLOW);
+        DrawRectangle(logoPositionX, logoPositionY + 240, bottomSideRecWidth, 16, COLOR_YELLOW);
     }
     else if (state == 3)    // Draw "raylib" text-write animation + "powered by"
     {
-        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, Fade(COLOR_STAR, alpha));
-        DrawRectangle(logoPositionX, logoPositionY + 16, 16, leftSideRecHeight - 32, Fade(COLOR_STAR, alpha));
+        DrawRectangle(logoPositionX, logoPositionY, topSideRecWidth, 16, Fade(COLOR_YELLOW, alpha));
+        DrawRectangle(logoPositionX, logoPositionY + 16, 16, leftSideRecHeight - 32, Fade(COLOR_YELLOW, alpha));
 
-        DrawRectangle(logoPositionX + 240, logoPositionY + 16, 16, rightSideRecHeight - 32, Fade(COLOR_STAR, alpha));
-        DrawRectangle(logoPositionX, logoPositionY + 240, bottomSideRecWidth, 16, Fade(COLOR_STAR, alpha));
+        DrawRectangle(logoPositionX + 240, logoPositionY + 16, 16, rightSideRecHeight - 32, Fade(COLOR_YELLOW, alpha));
+        DrawRectangle(logoPositionX, logoPositionY + 240, bottomSideRecWidth, 16, Fade(COLOR_YELLOW, alpha));
 
         DrawRectangle(GetScreenWidth()/2 - 112, GetScreenHeight()/2 - 112, 224, 224, Fade(COLOR_BACKGROUND, alpha));
 
-        DrawText(TextSubtext("raylib", 0, lettersCount), GetScreenWidth()/2 - 44, GetScreenHeight()/2 + 48, 50, Fade(COLOR_STAR, alpha));
+        DrawText(TextSubtext("raylib", 0, lettersCount), GetScreenWidth()/2 - 44, GetScreenHeight()/2 + 48, 50, Fade(COLOR_YELLOW, alpha));
 
         if (framesCounter > 20) DrawText("powered by", logoPositionX, logoPositionY - 27, 20, Fade(DARKGRAY, alpha));
     }

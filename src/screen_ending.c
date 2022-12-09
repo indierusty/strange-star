@@ -33,7 +33,7 @@ void draw_ending_screen(void)
 			screen_width/2-MeasureText(message, MSG_FONTSIZE)/2,
 			screen_height/2-MSG_FONTSIZE/2, 
 			MSG_FONTSIZE, 
-			COLOR_PLAYER);
+			COLOR_GREEN);
 
 	DrawText(
 			"PRESS [ENTER] to RESTART!",

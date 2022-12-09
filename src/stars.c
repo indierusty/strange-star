@@ -62,7 +62,7 @@ void stars_draw(void)
 	for (int i = 0; i < MAX_STAR; ++i) {
 		Star* s = &g.stars[i];
 		if (s->active) {
-			DrawCircleV(s->position, s->radius, COLOR_STAR);
+			DrawCircleV(s->position, s->radius, COLOR_WHITE);
 		}
 	}
 }

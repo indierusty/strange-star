@@ -11,6 +11,7 @@ static void init()
 	g.mndistance = 150;
 	g.score = 0;
 	g.out = false;
+	g.delta = 0;
 }
 
 void init_gameplay_screen(void)

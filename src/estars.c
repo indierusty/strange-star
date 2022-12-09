@@ -88,7 +88,7 @@ void estars_draw(void)
 	{
 		if (g.estars[i].active) 
 		{
-			DrawCircleV(g.estars[i].position, g.estars[i].radius, COLOR_ESTAR);
+			DrawCircleV(g.estars[i].position, g.estars[i].radius, COLOR_YELLOW);
 		}
 	}
 }
