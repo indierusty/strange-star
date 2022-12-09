@@ -28,10 +28,10 @@ void init_tutorial_screen(void)
 	story_pos.x = 20;
 	story_pos.y = 20;
 
-	border.x = 2;
-	border.y = 2;
-	border.width = 250;
-	border.height= 250;
+	border.x = 4;
+	border.y = 4;
+	border.width = 248;
+	border.height= 248;
 }
 
 void update_tutorial_screen(void)

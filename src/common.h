@@ -20,9 +20,7 @@ static const int screen_height= 1<<8;
 #define COLOR_WHITE			(Color) {0xeb, 0xdb, 0xb2, 255}
 #define COLOR_YELLOW		(Color) {0xfa, 0xbd, 0x2f, 255}
 
-static Vector2 new_vec(float x, float y) 
-{
-	return (Vector2){x, y};
-}
+/// definition in main.c
+Vector2 new_vec(float x, float y);
 
 #endif // COMMON_H

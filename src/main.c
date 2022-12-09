@@ -35,6 +35,11 @@ static void update_transition(void);         // Update transition effect
 static void draw_transition(void);           // Draw transition effect (full-screen rectangle)
 
 static void update_draw_frame(void);          // Update and draw one frame
+											  //
+Vector2 new_vec(float x, float y)
+{
+	return (Vector2){x, y};
+}
 
 //----------------------------------------------------------------------------------
 // Main entry point

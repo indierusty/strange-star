@@ -75,8 +75,6 @@ void init_title_screen(void)
 			20);
 	
 	anim_time = 1.2;
-	animation_done = false;
-
 	timer = 0;
 
 	switch_to_screen = GAMEPLAY; 
@@ -102,6 +100,8 @@ static void update_menu()
 {
 	if (IsKeyPressed(KEY_DOWN)) active_option += 1;
 	if (IsKeyPressed(KEY_UP)) active_option -= 1;
+
+	/// wrap value
 	if (active_option < 0) active_option = MENU_SIZE-1;
 	if (active_option == MENU_SIZE) active_option = 0;
 }
@@ -142,8 +142,8 @@ void draw_title_screen(void)
 {
 	DrawText(
 			name, 
-			name_init_pos.x,	
-			name_init_pos.y,	
+			animation_done ? name_final_pos.x : name_init_pos.x,	
+			animation_done ? name_final_pos.y : name_init_pos.y,	
 			NAME_SIZE, 
 			COLOR_YELLOW);
 
