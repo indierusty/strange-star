@@ -45,5 +45,5 @@ see LICENSE.md for more.
 *Copyright (c) 2022 Priyaan (twitter @priyaanyadav)
 
 ### Warning 
- - Code is messy. I'm learning programming.
+ - Code is messy. I have just started learning programming.
 
