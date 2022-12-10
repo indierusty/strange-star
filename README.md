@@ -1,6 +1,6 @@
 ## STRANGE STAR
 
-![STRANGE STAR](screenshots/screenshot000.png "STRANGE STAR")
+![STRANGE STAR](screenshots/strange-star.png "STRANGE STAR")
 
 ### Description
 
@@ -17,9 +17,6 @@ Keyboard:
  - WASD to move
  - SPACE to Dash while moving
 
-### Screenshots
-
-![STRANGE STAR](screenshots/strange-star.png "STRANGE STAR")
 
 ### Developers
 
