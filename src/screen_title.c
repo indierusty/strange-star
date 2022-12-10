@@ -155,6 +155,21 @@ void draw_title_screen(void)
 			COLOR_YELLOW);
 
 	if (animation_done) draw_menu();
+
+	/// Draw Credits
+#define TEXT "powerd by raylib"
+#define FONT_SIZE 10
+
+	if (animation_done) {
+		DrawText(TEXT, 
+			screen_width/2-MeasureText(TEXT, FONT_SIZE)/2, 
+			screen_height-FONT_SIZE-10, 
+			FONT_SIZE,
+			LIGHTGRAY);	
+	}
+
+#undef FONT_SIZE
+#undef TEXT
 }
 
 void unload_title_screen(void) 

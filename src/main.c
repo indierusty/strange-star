@@ -70,7 +70,7 @@ int main(void)
     currentScreen = LOGO;
     init_logo_screen();
 
-#define FPS 160
+#define FPS 90
 
 #if defined(PLATFORM_WEB)
     emscripten_set_main_loop(update_draw_frame, FPS, 1);
