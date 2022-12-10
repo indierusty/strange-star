@@ -19,7 +19,7 @@ Keyboard:
 
 ### Screenshots
 
-![STRANGE STAR](screenshots/gameplay.gif "STRANGE STAR")
+![STRANGE STAR](screenshots/strange-star.png "STRANGE STAR")
 
 ### Developers
 
