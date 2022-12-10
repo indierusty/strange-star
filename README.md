@@ -42,4 +42,8 @@ MIT license
 
 see LICENSE.md for more.
 
-*Copyright (c) 2022-23 Priyaan
+*Copyright (c) 2022 Priyaan (twitter @priyaanyadav)
+
+### Warning 
+ - Code is messy. I'm learning programming.
+
