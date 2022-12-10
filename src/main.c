@@ -57,9 +57,9 @@ int main(void)
 
     // Load global data (assets that must be available in all screens, i.e. font)
     font = LoadFont("resources/Roboto-Medium.ttf");
-    music = LoadMusicStream("resources/ambient.ogg");
-    fxCoin = LoadSound("resources/coin.wav");
-    inter_game = LoadSound("resources/coin.wav");
+    music = LoadMusicStream("resources/Light-Years_V001_Looping.mp3");
+    fxCoin = LoadSound("resources/back_003.ogg");
+    inter_game = LoadSound("resources/back_003.ogg");
     player_destroy = LoadSound("resources/laserLarge_002.ogg");
     star_destroy = LoadSound("resources/forceField_003.ogg");
 
