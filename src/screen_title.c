@@ -98,8 +98,14 @@ static void do_animation()
 
 static void update_menu() 
 {
-	if (IsKeyPressed(KEY_DOWN)) active_option += 1;
-	if (IsKeyPressed(KEY_UP)) active_option -= 1;
+	if (IsKeyPressed(KEY_DOWN)) {
+		active_option += 1;
+		PlaySound(fxCoin);
+	}
+	if (IsKeyPressed(KEY_UP)) {
+		active_option -= 1;
+		PlaySound(fxCoin);
+	}
 
 	/// wrap value
 	if (active_option < 0) active_option = MENU_SIZE-1;
@@ -110,6 +116,7 @@ void update_title_screen(void)
 {
 	if (animation_done && IsKeyPressed(KEY_ENTER)) 
 	{
+		PlaySound(inter_game);
 		end_screen = true;
 		switch_to_screen = GAMEPLAY;
 	}

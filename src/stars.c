@@ -21,6 +21,7 @@ static void init_star(Star* s)
 	s->active = true; 
 
 	s->reverse = false;
+
 }
 
 void stars_init(void)
@@ -47,6 +48,7 @@ static void update_star(Star* s)
 		}
 	} else {
 		init_star(s);
+		///
 	}
 }
 

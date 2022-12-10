@@ -14,6 +14,9 @@ GameScreen currentScreen = 0;
 Font font = { 0 };
 Music music = { 0 };
 Sound fxCoin = { 0 };
+Sound inter_game = { 0 };
+Sound player_destroy = { 0 };
+Sound star_destroy = { 0 };
 bool exit_game = false;
 
 GameState g;
@@ -56,6 +59,9 @@ int main(void)
     font = LoadFont("resources/Roboto-Medium.ttf");
     music = LoadMusicStream("resources/ambient.ogg");
     fxCoin = LoadSound("resources/coin.wav");
+    inter_game = LoadSound("resources/coin.wav");
+    player_destroy = LoadSound("resources/laserLarge_002.ogg");
+    star_destroy = LoadSound("resources/forceField_003.ogg");
 
     SetMusicVolume(music, 1.0f);
     PlayMusicStream(music);
@@ -94,6 +100,9 @@ int main(void)
     UnloadFont(font);
     UnloadMusicStream(music);
     UnloadSound(fxCoin);
+    UnloadSound(inter_game);
+    UnloadSound(player_destroy);
+    UnloadSound(star_destroy);
 
     CloseAudioDevice();     // Close audio context
 

@@ -40,6 +40,10 @@ extern GameScreen currentScreen;
 extern Font font;
 extern Music music;
 extern Sound fxCoin;
+extern Sound inter_game;
+extern Sound star_destroy;
+extern Sound player_destroy;
+extern Sound fxCoin;
 extern bool exit_game;
 
 //----------------------------------------------------------------------------------

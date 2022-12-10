@@ -29,17 +29,17 @@ void estar_init(Estar* e)
 
     /// update pos untill is far enough from player
 	e->position = position();
-	e->radius = 3.0f;
-	e->max_radius = 10.0f;
+	e->radius = 1.0f;
+	e->max_radius = 12.0f;
 
 	e->time_counter = 0.0f;
     e->duration = GetRandomValue(5, 15)*1.0f/10;
-	e->start_time = GetRandomValue(5,20)*1.0f/10;
+	e->start_time = GetRandomValue(8,20)*1.0f/10;
 
 	e->blink_speed = GetRandomValue(5, 20)*1.0f/10;
 
 	e->direction = Vector2Normalize(Vector2Subtract(g.player.position, e->position));
-	e->speed = 100.0f;
+	e->speed = 140.0f;
 }
 
 void estars_init(void)

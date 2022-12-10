@@ -29,7 +29,7 @@ void update_ending_screen(void)
 void draw_ending_screen(void)
 {
 	DrawText(
-			TextSubtext(message, 0, (int)(time_counter*5)), 
+			TextSubtext(message, 0, (int)(time_counter*10)), 
 			screen_width/2-MeasureText(message, MSG_FONTSIZE)/2,
 			screen_height/2-MSG_FONTSIZE/2, 
 			MSG_FONTSIZE, 

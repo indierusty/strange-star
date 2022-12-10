@@ -12,6 +12,10 @@ static void init()
 	g.score = 0;
 	g.out = false;
 	g.delta = 0;
+
+	g.reduce_time = 0.0f;
+	g.reduce_duration = 2.2f;
+
 }
 
 void init_gameplay_screen(void)
@@ -26,9 +30,6 @@ void init_gameplay_screen(void)
 
 	/// Estars
 	estars_init();
-
-	/// Particles
-	particles_init();
 }
 
 static bool check_collision(Vector2 apos, float aradius, Vector2 bpos, float bradius)
@@ -46,13 +47,22 @@ static void update(void)
 			if (check_collision(g.player.position, g.player.radius, g.estars[i].position, g.estars[i].radius)) {
 				if (g.player.dashing) {
 					g.score += DASH_SCORE;
-					make_particle(g.estars[i].position);
+					//make_particle(g.estars[i].position);
 					estar_init(&g.estars[i]);
+					PlaySound(star_destroy);
 				} else {
+					PlaySound(player_destroy);
 					g.out = true;
 				}
 			}
 		}
+	}
+
+	/// reduce distance between starange star and playe
+
+	if (g.mndistance > 100 && g.reduce_time <= g.delta) {
+		g.mndistance -= 10;
+		g.reduce_time += g.reduce_duration;
 	}
 }
 
@@ -70,9 +80,6 @@ void update_gameplay_screen(void)
 	/// Estars
 	estars_update();
 
-	/// Particles
-	particles_update();
-
 	update();
 }
 
@@ -86,13 +93,11 @@ void draw_gameplay_screen(void)
 
 	/// Estars
 	estars_draw();
-
-	/// Particles
-	particles_draw();
 }
 
 void unload_gameplay_screen(void)
 {
+	///
 }
 
 int finish_gameplay_screen(void)

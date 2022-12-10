@@ -68,6 +68,10 @@ void player_update(void)
 		g.player.position = Vector2Add(g.player.position, g.player.acceleration);
 	}
 
+	/// clamp position
+	g.player.position.x = Clamp(g.player.position.x, 0, screen_width);
+	g.player.position.y = Clamp(g.player.position.y, 0, screen_height);
+
 }
 
 void player_draw(void)
