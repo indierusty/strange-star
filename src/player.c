@@ -16,7 +16,7 @@ void player_init(void)
 	g.player.dash_dir = Vector2Zero();
 
 	g.player.time_counter = 0.0f;
-	g.player.dash_time = 0.10f;
+	g.player.dash_time = 0.20f;
 }
 
 static void handle_dashing(void)

@@ -26,6 +26,9 @@ void init_gameplay_screen(void)
 
 	/// Estars
 	estars_init();
+
+	/// Particles
+	particles_init();
 }
 
 static bool check_collision(Vector2 apos, float aradius, Vector2 bpos, float bradius)
@@ -43,6 +46,7 @@ static void update(void)
 			if (check_collision(g.player.position, g.player.radius, g.estars[i].position, g.estars[i].radius)) {
 				if (g.player.dashing) {
 					g.score += DASH_SCORE;
+					make_particle(g.estars[i].position);
 					estar_init(&g.estars[i]);
 				} else {
 					g.out = true;
@@ -66,6 +70,9 @@ void update_gameplay_screen(void)
 	/// Estars
 	estars_update();
 
+	/// Particles
+	particles_update();
+
 	update();
 }
 
@@ -79,6 +86,9 @@ void draw_gameplay_screen(void)
 
 	/// Estars
 	estars_draw();
+
+	/// Particles
+	particles_draw();
 }
 
 void unload_gameplay_screen(void)

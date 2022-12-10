@@ -4,6 +4,32 @@
 #include "raylib.h"
 
 //----------------------------------------------------------------------------------
+// Particle 
+//----------------------------------------------------------------------------------
+
+typedef struct {
+	Vector2 position;
+	Vector2 direction;
+	Color color;
+	float radius;
+} MiniStar;
+
+#define MINISTARS_SIZE 5
+
+typedef struct {
+	MiniStar stars[MINISTARS_SIZE];
+	Vector2 position;
+	bool active;
+} Particle;
+
+#define PARTICLES_SIZE 10
+
+void make_particle(Vector2 at);
+void particles_init(void);
+void particles_update(void);
+void particles_draw(void);
+
+//----------------------------------------------------------------------------------
 // Player
 //----------------------------------------------------------------------------------
 typedef struct {
@@ -82,6 +108,7 @@ typedef struct {
 	Player player;
 	Star stars[MAX_STAR];
 	Estar estars[MAX_ESTAR];
+	Particle particles[PARTICLES_SIZE];
 	/// mn initial distance between player and estar and between estars
 	int mndistance;
 	int estars_count;

@@ -1,0 +1,1 @@
+$ make PLATFORM=PLATFORM_WEB -B -e
