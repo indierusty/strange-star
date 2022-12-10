@@ -375,7 +375,6 @@ endif
 PROJECT_SOURCE_FILES ?= \
     main.c \
 	estars.c \
-	particle.c \
 	player.c \
 	stars.c \
     screen_ending.c \
