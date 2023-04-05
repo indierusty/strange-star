@@ -1,10 +1,10 @@
-## STRANGE STAR
+## [STRANGE STAR](https://cosyrusty.itch.io/strange-star)
 
 ![STRANGE STAR](screenshots/strange-star.png "STRANGE STAR")
 
 ### Description
 
-Destroy Strange Star by Dashing spacescraft at high speed.
+ - Destroy Strange Star by Dashing spacescraft at high speed.
 
 ### Features
 
@@ -18,9 +18,9 @@ Keyboard:
  - SPACE to Dash while moving
 
 
-### Developers
+### Developer
 
- - Priyanshu @priyaan99 - programming, art, game design 
+ - Priyanshu @cosyrusty - programming and game design 
 
 ### Credit
 
@@ -28,19 +28,10 @@ Keyboard:
  - Sounds "ambient", "back", "forceField", "laserLarge" 
 by Kenny or www.kenney.nl
 
-### Links
-
-TODO:
- - itch.io Release: $(itch.io Game Page)
-
 ### License
 
 MIT license
 
-see LICENSE.md for more.
-
-*Copyright (c) 2022 Priyaan (twitter @priyaanyadav)
-
 ### Warning 
- - Code is messy. I have just started learning programming.
+ - The code is messy. I have just started learning programming.
 
