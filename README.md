@@ -1,4 +1,4 @@
-## [STRANGE STAR](https://cosyrusty.itch.io/strange-star)
+## [STRANGE STAR](https://indierusty.itch.io/strange-star)
 
 ![STRANGE STAR](screenshots/strange-star.png "STRANGE STAR")
 
@@ -9,7 +9,7 @@
 ### Features
 
  - Dashing 
- - Unexpected Strange Stars
+ - Destory Strange Stars
 
 ### Controls
 
@@ -20,7 +20,7 @@ Keyboard:
 
 ### Developer
 
- - Priyanshu @cosyrusty - programming and game design 
+ - Priyanshu @indierusty - programming and design 
 
 ### Credit
 
